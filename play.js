@@ -14,7 +14,7 @@ const handleUserInput = function(data) {
   if (data === 'w') {
     connection.write('Move: up');
   }
-  if (data === 'T') { // \u0003 maps to ctrl+c input
+  if (data === '\u0003') { // \u0003 maps to ctrl+c input
     process.exit();
   }
 };
