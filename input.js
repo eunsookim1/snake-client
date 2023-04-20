@@ -1,40 +1,35 @@
+const { movements, mappings } = require('./constants');
 // stores the active TCP connection object.
 let connection;
 
 // setup interface to handle user input from stdin
-const setupInput = function(conn) { // belongs to play.js file
-  connection = conn; // to use conn;
-  const stdin = process.stdin; // process.stdin tells node from client
-  stdin.setRawMode(true); // when I type something in terminal for interpreting
+const setupInput = function(conn) {
+  connection = conn;
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
   stdin.setEncoding("utf8");
-  stdin.resume(); // socket to continue communication
+  stdin.resume();
   stdin.on("data", (key) => {
     handleUserInput(key);
   });
   return stdin;
 };
 
+
 const handleUserInput = function(key) {
-  // console.log('data', data);
-  
-  if (key === 'w') {
-    connection.write('Move: up');
+  if (key in movements) { // using constants file to dry code
+    connection.write(movements[key]);
   }
-  if (key === 's') {
-    connection.write('Move: down');
-  }
-  if (key === 'd') {
-    connection.write('Move: right');
-  }
-  if (key === 'a') {
-    connection.write('Move: left');
-  }
-  if (key === 'p') {
-    connection.write('Say: Great play!');
-  }
+
   if (key === '\u0003') { // \u0003 maps to ctrl+c input
+    console.log("Have a good day!");
     process.exit();
   }
+
+  if (key in mappings) {
+    connection.write(`Say: ${mappings[key]}`);
+  }
+ 
 };
 
 module.exports = { setupInput };
