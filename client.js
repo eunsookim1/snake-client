@@ -23,7 +23,6 @@ const connect = function() {
 
   // Data event
   
- 
   return conn;
 };
 
