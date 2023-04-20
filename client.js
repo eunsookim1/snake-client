@@ -20,8 +20,6 @@ const connect = function() {
     //   conn.write('Move: up');
     // }, 500);
   });
-
-  // Data event
   
   return conn;
 };
