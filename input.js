@@ -1,6 +1,6 @@
 const { movements, mappings } = require('./constants');
-// stores the active TCP connection object.
-let connection;
+
+let connection;   // stores the active TCP connection object
 
 // setup interface to handle user input from stdin
 const setupInput = function(conn) {
