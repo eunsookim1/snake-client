@@ -1,6 +1,7 @@
 // contains constants, hard-coded data
-const IP = 'localhost';
-const PORT = 50541;
+const IP = 'localhost'; // IP address here
+const PORT = 50541;     // Port number here
+
 const movements = {
   w: 'Move: up',
   s: 'Move: down',
